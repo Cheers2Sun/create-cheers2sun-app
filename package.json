@@ -1,0 +1,46 @@
+{
+  "name": "create-cheers2sun-app",
+  "version": "1.0.0",
+  "description": "Open Source Generator for the Cheers2Sun Travel Application Framework",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/index.ts",
+    "start": "node dist/index.js",
+    "lint": "eslint .",
+    "format": "prettier --write ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cheers2Sun/create-cheers2sun-app.git"
+  },
+ "engines": {
+    "node": ">=20.19.2"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Cheers2Sun/create-cheers2sun-app/issues"
+  },
+  "homepage": "https://github.com/Cheers2Sun/create-cheers2sun-app#readme",
+  "dependencies": {
+    "chalk": "^5.6.2",
+    "commander": "^13.1.0",
+    "fs-extra": "^11.3.5",
+    "js-yaml": "^4.3.0",
+    "ora": "^8.2.0"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.4",
+    "@types/node": "^20.19.43",
+    "eslint": "^9.39.4",
+    "prettier": "^3.8.5",
+    "tsx": "^4.22.4",
+    "typescript": "^5.9.3"
+  }
+}
