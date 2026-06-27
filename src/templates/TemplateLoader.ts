@@ -4,11 +4,11 @@ import * as path from "node:path";
 import yaml from "js-yaml";
 
 import { TemplateManifest } from "./TemplateManifest";
-
+import { Installation } from "../utils/Installation";
 export class TemplateLoader {
 
     constructor(
-        private readonly templatesRoot: string = "templates"
+        private readonly templatesRoot: string = Installation.templates() 
     ) {}
 
     /**

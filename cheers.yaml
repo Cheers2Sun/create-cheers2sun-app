@@ -1,63 +1,16 @@
 version: 1
 
 project:
-  name: cheers-demo
-  displayName: Cheers Demo
-  organization: Cheers2Sun
-
-application:
-  domain: travel
-  template: premium-travel
-  description: Premium travel booking platform
+  name: "{{PROJECT_NAME}}"
 
 framework:
-  frontend:
-    name: nextjs
-    version: 16
-
-  language:
-    name: typescript
-    version: 5
+  nextjs: 16
+  typescript: true
 
 deployment:
-  provider: vercel
-
-theme:
-  mode: light
-
-  colors:
-    primary: "#0B5FFF"
-    secondary: "#00C2A8"
+  platform: vercel
 
 modules:
-  homepage:
-    enabled: true
+  - ui
 
-  flights:
-    enabled: true
-
-  hotels:
-    enabled: false
-
-  cars:
-    enabled: false
-
-  cruises:
-    enabled: false
-
-  experiences:
-    enabled: false
-
-plugins:
-  flights:
-    provider: duffel
-
-  authentication:
-    provider: supabase
-
-business:
-  enabled: false
-
-metadata:
-  author: ""
-  license: Apache-2.0
+providers: {}

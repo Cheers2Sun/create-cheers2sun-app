@@ -2,8 +2,11 @@ import * as fs from "node:fs";
 import * as path from "node:path";
 
 import { CheersContext } from "../compiler/CheersContext";
+import { PlaceholderEngine } from "../templates/PlaceholderEngine";
 
 export class CheersProjectWriter {
+
+    private readonly placeholders = new PlaceholderEngine();
 
     public write(context: CheersContext): void {
 
@@ -13,7 +16,8 @@ export class CheersProjectWriter {
 
             this.copyDirectory(
                 template,
-                context.output
+                context.output,
+                context
             );
 
         }
@@ -34,7 +38,8 @@ export class CheersProjectWriter {
 
     private copyDirectory(
         source: string,
-        destination: string
+        destination: string,
+        context: CheersContext
     ): void {
 
         const entries = fs.readdirSync(source, {
@@ -48,7 +53,7 @@ export class CheersProjectWriter {
                 entry.name
             );
 
-            const destinationPath = path.join(
+            let destinationPath = path.join(
                 destination,
                 entry.name
             );
@@ -59,7 +64,35 @@ export class CheersProjectWriter {
 
                 this.copyDirectory(
                     sourcePath,
-                    destinationPath
+                    destinationPath,
+                    context
+                );
+
+                continue;
+
+            }
+
+            if (sourcePath.endsWith(".tpl")) {
+
+                destinationPath = destinationPath.substring(
+                    0,
+                    destinationPath.length - 4
+                );
+
+                const template = fs.readFileSync(
+                    sourcePath,
+                    "utf8"
+                );
+
+                const output = this.placeholders.process(
+                    template,
+                    context
+                );
+
+                fs.writeFileSync(
+                    destinationPath,
+                    output,
+                    "utf8"
                 );
 
             } else {

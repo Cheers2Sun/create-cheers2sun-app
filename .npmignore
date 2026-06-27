@@ -1,0 +1,7 @@
+.github/
+docs/
+tests/
+.vscode/
+.idea/
+coverage/
+*.log

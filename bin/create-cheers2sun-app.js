@@ -1,3 +1,9 @@
 #!/usr/bin/env node
 
-require("../dist/index.js");
+try {
+    require("../dist/cli/index.js");
+} catch (error) {
+    console.error("Failed to start create-cheers2sun-app.");
+    console.error(error);
+    process.exit(1);
+}

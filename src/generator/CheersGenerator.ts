@@ -3,7 +3,7 @@ import * as path from "node:path";
 
 import { CheersContext } from "../compiler/CheersContext";
 import { CheersProjectWriter } from "./CheersProjectWriter";
-
+import { GenerationVerifier } from "./GenerationVerifier";
 
 export class CheersGenerator {
 
@@ -16,6 +16,10 @@ export class CheersGenerator {
         const writer = new CheersProjectWriter();
 
         writer.write(context);
+
+        const verifier = new GenerationVerifier();
+
+        verifier.verify(context);
 
         console.log("Generation completed.");
 
