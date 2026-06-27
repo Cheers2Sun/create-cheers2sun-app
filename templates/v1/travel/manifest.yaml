@@ -1,0 +1,15 @@
+version: 1
+
+template: travel
+
+extends:
+  - base
+  - nextjs
+
+plugins:
+  - core
+  - duffel
+  - supabase
+
+theme:
+  default: cheers
