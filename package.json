@@ -10,9 +10,10 @@
   "scripts": {
     "build": "tsc",
     "dev": "tsx src/index.ts",
-    "start": "node dist/index.js",
-    "lint": "eslint .",
-    "format": "prettier --write ."
+    "start": "node dist/index.js"
+  },
+  "bin": {
+       "create-cheers2sun-app": "./bin/create-cheers2sun-app.js"
   },
   "repository": {
     "type": "git",
