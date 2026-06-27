@@ -29,5 +29,12 @@ project:
 `
     );
 
+    await renderTemplate(
+       "templates/base/README.md.tpl",
+      path.join(projectDir, "README.md"),
+      {
+        PROJECT_NAME: projectName
+      }
+    );
     console.log("Project created:", projectDir);
 }
