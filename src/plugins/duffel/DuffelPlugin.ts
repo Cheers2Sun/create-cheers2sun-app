@@ -1,6 +1,7 @@
 import { CheersContext } from "../../compiler/CheersContext";
 import { Plugin } from "../Plugin";
 import { PluginSupportResult,SUPPORTED } from "../PluginSupportResult";
+import { PluginFileWriter } from "../../generator/PluginFileWriter";
 export class DuffelPlugin implements Plugin {
 
     public readonly name = "duffel";
@@ -37,7 +38,22 @@ export class DuffelPlugin implements Plugin {
         context: CheersContext
     ): void {
 
-        console.log("DuffelPlugin.generate");
+       const writer =  new PluginFileWriter(context);
+
+       writer.writeTemplate(
+           "duffel/client.ts.tpl",
+           "src/lib/duffel/client.ts"
+       );
+
+       writer.writeTemplate(
+           "duffel/search.ts.tpl",
+           "src/lib/duffel/search.ts"
+       );
+
+       writer.writeTemplate(
+           "duffel/types.ts.tpl",
+           "src/lib/duffel/types.ts"
+       );
 
     }
 

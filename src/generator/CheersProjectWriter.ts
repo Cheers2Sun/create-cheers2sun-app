@@ -84,7 +84,7 @@ export class CheersProjectWriter {
                     "utf8"
                 );
 
-                const output = this.placeholders.process(
+                const output = this.placeholders.render(
                     template,
                     context
                 );

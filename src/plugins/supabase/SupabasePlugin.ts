@@ -1,6 +1,8 @@
 import { CheersContext } from "../../compiler/CheersContext";
 import { Plugin } from "../Plugin";
 import { PluginSupportResult,SUPPORTED } from "../PluginSupportResult";
+import { PluginFileWriter } from "../../generator/PluginFileWriter";
+
 export class SupabasePlugin implements Plugin {
 
     public readonly name = "supabase";
@@ -21,8 +23,28 @@ export class SupabasePlugin implements Plugin {
     public generate(
         context: CheersContext
     ): void {
-
-        console.log("SupabasePlugin.generate");
+        const writer =
+            new PluginFileWriter(context);
+    
+        writer.writeTemplate(
+            "supabase/client.ts.tpl",
+            "src/lib/supabase/client.ts"
+        );
+    
+        writer.writeTemplate(
+            "supabase/server.ts.tpl",
+            "src/lib/supabase/server.ts"
+        );
+    
+        writer.writeTemplate(
+            "supabase/middleware.ts.tpl",
+            "src/lib/supabase/middleware.ts"
+        );
+    
+        writer.writeTemplate(
+            "supabase/env.example.tpl",
+            ".env.example"
+        );
 
     }
 

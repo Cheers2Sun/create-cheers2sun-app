@@ -1,3 +1,4 @@
+import * as path from "node:path";
 import { CheersParser } from "./CheersParser";
 import { CheersValidator } from "./CheersValidator";
 import { CheersContext } from "./CheersContext";
@@ -34,10 +35,15 @@ export class CheersCompiler {
             manifest
         );
 
+        const generatorRoot = path.resolve(
+           __dirname,
+            "../.."
+        );
 
         const context: CheersContext = {
            spec,
            root: process.cwd(),
+           generatorRoot,
            output: outputDirectory,
            manifest,
            templates

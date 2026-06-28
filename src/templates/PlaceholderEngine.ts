@@ -1,43 +1,77 @@
-import { CheersContext } from "../compiler/CheersContext";
-
 export class PlaceholderEngine {
 
     /**
-     * Replaces all supported placeholders in the template.
+     * Renders a template by replacing
+     * {{project.name}}
+     * {{application.domain}}
+     * {{framework.frontend.name}}
+     * etc.
      */
-    public process(
-        content: string,
-        context: CheersContext
+    public render(
+        template: string,
+        model: unknown
     ): string {
 
-        let output = content;
+        return template.replace(
 
-        const replacements: Record<string, string> = {
+            /{{\s*([a-zA-Z0-9_.]+)\s*}}/g,
 
-            PROJECT_NAME:
-                context.spec.project.name,
+            (_, expression: string) => {
 
-            APP_DOMAIN:
-                context.spec.application.domain,
+                const value = this.lookup(
+                    model,
+                    expression
+                );
 
-            TEMPLATE_NAME:
-                context.spec.application.template,
+                return value == null
+                    ? ""
+                    : String(value);
 
-            SPEC_VERSION:
-                context.spec.version.toString()
+            }
 
-        };
+        );
 
-        for (const [key, value] of Object.entries(replacements)) {
+    }
 
-            output = output.replaceAll(
-                `{{${key}}}`,
-                value
-            );
+    /**
+     * Backward compatibility.
+     * Older code can continue calling process().
+     */
+    public process(
+        template: string,
+        model: unknown
+    ): string {
+
+        return this.render(
+            template,
+            model
+        );
+
+    }
+
+    private lookup(
+        model: unknown,
+        path: string
+    ): unknown {
+
+        let current = model;
+
+        for (const part of path.split(".")) {
+
+            if (
+                current === null ||
+                current === undefined
+            ) {
+
+                return undefined;
+
+            }
+
+            current = (current as Record<string, unknown>)[part];
 
         }
 
-        return output;
+        return current;
 
     }
 
