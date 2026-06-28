@@ -1,3 +1,4 @@
+import * as fs from "node:fs";
 import * as path from "node:path";
 
 export class Installation {
@@ -56,6 +57,56 @@ export class Installation {
             "default.yaml"
         );
 
+    }
+
+    public static plugins(): string {
+
+        return path.join(
+            this.templates(),
+            "plugins"
+        );
+
+    }    
+
+    public static packageJson(): string {
+    
+        return path.join(
+            this.root(),
+            "package.json"
+        );
+    
+    }
+    
+    public static readme(): string {
+    
+        return path.join(
+            this.root(),
+            "README.md"
+        );
+    
+    }
+    
+    public static license(): string {
+    
+        return path.join(
+            this.root(),
+            "LICENSE"
+        );
+    
+    }
+
+
+    public static version(): string {
+    
+        return JSON.parse(
+    
+            fs.readFileSync(
+                this.packageJson(),
+                "utf8"
+            )
+    
+        ).version;
+    
     }
 
 }

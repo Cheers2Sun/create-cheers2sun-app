@@ -51,7 +51,7 @@ export class PluginFileWriter {
         const result =
             this.engine.render(
                 template,
-                this.context.spec
+                this.context
             );
 
         fs.writeFileSync(

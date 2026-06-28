@@ -10,4 +10,10 @@ export class DuffelClient {
 
     }
 
+    public configured(): boolean {
+
+        return this.apiToken.length > 0;
+
+    }
+
 }

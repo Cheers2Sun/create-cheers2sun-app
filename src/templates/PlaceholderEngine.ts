@@ -1,4 +1,28 @@
+import { CheersContext } from "../compiler/CheersContext";
 export class PlaceholderEngine {
+
+
+
+    private createPlaceholders(
+            context: CheersContext
+          ): Map<string, string>{
+        const spec = context.spec;
+        const placeholders = new Map<string, string>();
+        placeholders.set(
+            "project.name",
+            spec.project?.name ?? ""
+        );
+        placeholders.set(
+            "project.displayName",
+            spec.project?.displayName ?? ""
+        );
+        placeholders.set(
+            "project.description",
+            spec.project?.description ?? ""
+        );
+        placeholders.set("plugins",Object.keys(spec.plugins ?? {}).map(plugin => `- ${plugin}`).join("\n"));  
+        return placeholders;
+   }
 
     /**
      * Renders a template by replacing
@@ -7,31 +31,34 @@ export class PlaceholderEngine {
      * {{framework.frontend.name}}
      * etc.
      */
-    public render(
-        template: string,
-        model: unknown
-    ): string {
 
-        return template.replace(
+        public render(
+            template: string,
+            context: CheersContext
+        ): string {
+        
+            const placeholders =
+                this.createPlaceholders(context);        
+            return template.replace(
+                /{{\s*([a-zA-Z0-9_.]+)\s*}}/g,
+                (_, expression: string) => {
+                    const explicit =
+                        placeholders.get(expression);
+                    if (explicit !== undefined) {
+                        return explicit;
+                    }
+                    const value =
+                        this.lookup(
+                            context.spec,
+                            expression
+                        );
+                    return value == null
+                        ? ""
+                        : String(value);
+                }
+            );
+        }
 
-            /{{\s*([a-zA-Z0-9_.]+)\s*}}/g,
-
-            (_, expression: string) => {
-
-                const value = this.lookup(
-                    model,
-                    expression
-                );
-
-                return value == null
-                    ? ""
-                    : String(value);
-
-            }
-
-        );
-
-    }
 
     /**
      * Backward compatibility.
@@ -39,12 +66,12 @@ export class PlaceholderEngine {
      */
     public process(
         template: string,
-        model: unknown
+        context: CheersContext
     ): string {
 
         return this.render(
             template,
-            model
+            context
         );
 
     }

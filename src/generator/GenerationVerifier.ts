@@ -34,7 +34,18 @@ export class GenerationVerifier {
 
             "app/page.tsx",
 
-            "app/globals.css"
+            "app/globals.css",
+            ".env.example",
+            "components/Header.tsx",
+            "components/Footer.tsx",
+            "public/logo.svg",
+            "src/lib/duffel/client.ts",
+            "src/lib/duffel/search.ts",
+            "src/lib/duffel/types.ts",
+            "src/lib/supabase/client.ts",
+            "src/lib/supabase/server.ts",
+            "src/lib/supabase/middleware.ts"
+
 
         ];
 

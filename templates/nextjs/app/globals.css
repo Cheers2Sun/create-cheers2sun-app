@@ -1,9 +1,6 @@
-html,
 body {
 
     margin: 0;
-
-    padding: 0;
 
     font-family: Arial, Helvetica, sans-serif;
 
@@ -11,12 +8,28 @@ body {
 
 main {
 
-    padding: 60px;
+    max-width: 900px;
+
+    margin: auto;
+
+    padding: 40px;
 
 }
 
-h1 {
+input {
 
-    color: #0a5;
+    display: block;
+
+    width: 100%;
+
+    margin-bottom: 15px;
+
+    padding: 10px;
+
+}
+
+button {
+
+    padding: 10px 20px;
 
 }

@@ -27,6 +27,7 @@ npm run dev
 
 ```
 app/
+components/
 src/
 public/
 ```

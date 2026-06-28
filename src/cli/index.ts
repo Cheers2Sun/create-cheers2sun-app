@@ -5,7 +5,7 @@ import * as path from "node:path";
 import { Command } from "commander";
 import { CheersCompiler } from "../compiler/CheersCompiler";
 import { Installation } from "../utils/Installation";
-
+import { DoctorCommand } from "./DoctorCommand";
 import packageJson from "../../package.json";
 
 const program = new Command();
@@ -138,6 +138,17 @@ program
 
         }
     );
+
+program
+    .command("doctor")
+    .description(
+        "Verify generator installation"
+    )
+    .action(() => {
+        new DoctorCommand()
+            .execute();
+    });
+
 
 program.parse();
 
