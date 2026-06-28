@@ -1,4 +1,4 @@
-export default function Home() {
+export default function HomePage() {
 
     return (
 
@@ -6,7 +6,7 @@ export default function Home() {
 
             <h1>
 
-                Welcome to {{PROJECT_NAME}}
+                Welcome to {{project.name}}
 
             </h1>
 

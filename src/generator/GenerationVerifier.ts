@@ -5,22 +5,79 @@ import { CheersContext } from "../compiler/CheersContext";
 
 export class GenerationVerifier {
 
-    public verify(context: CheersContext): void {
 
-        console.log("");
+    public verify(output: string): void {
+
+        console.log();
         console.log("Verifying generated project...");
+        console.log();
 
-        this.requireFile(context.output, "README.md");
-        this.requireFile(context.output, "package.json");
-        this.requireFile(context.output, "tsconfig.json");
-        this.requireFile(context.output, "app/page.tsx");
+        const requiredFiles = [
 
-        this.ensureNoTemplates(context.output);
+            "README.md",
 
+            "package.json",
+
+            "tsconfig.json",
+
+            "next.config.ts",
+
+            "next-env.d.ts",
+
+            "eslint.config.mjs",
+
+            "postcss.config.mjs",
+
+            ".gitignore",
+            ".cheers/manifest.json",
+            "app/layout.tsx",
+
+            "app/page.tsx",
+
+            "app/globals.css"
+
+        ];
+
+        let success = true;
+
+        for (const file of requiredFiles) {
+
+            const filename = path.join(
+                output,
+                file
+            );
+
+            if (fs.existsSync(filename)) {
+
+                console.log(`✓ ${file}`);
+
+            } else {
+
+                console.log(`✗ ${file}`);
+
+                success = false;
+
+            }
+
+        }
+
+        if (!success) {
+
+            throw new Error(
+                "Generation verification failed."
+            );
+
+        }
+
+        console.log();
         console.log("✅ Generation verification passed.");
-        console.log("");
 
     }
+
+
+
+
+
 
     private requireFile(
         root: string,

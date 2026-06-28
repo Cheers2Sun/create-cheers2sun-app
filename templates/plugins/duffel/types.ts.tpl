@@ -1,7 +1,11 @@
-export class DuffelTypes {
+export interface Flight {
 
-    constructor() {
+    id: string;
 
-    }
+    origin: string;
+
+    destination: string;
+
+    price?: string;
 
 }

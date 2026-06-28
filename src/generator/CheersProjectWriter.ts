@@ -46,6 +46,11 @@ export class CheersProjectWriter {
             withFileTypes: true
         });
 
+console.log(`Reading: ${source}`);
+
+for (const e of entries) {
+    console.log(`  -> ${e.name}`);
+}
         for (const entry of entries) {
 
             const sourcePath = path.join(

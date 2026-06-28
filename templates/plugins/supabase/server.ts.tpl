@@ -1,7 +1,7 @@
-export class SupabaseServer {
+export function createServerClient() {
 
-    constructor() {
-
-    }
+    console.log(
+        "Supabase server client initialized."
+    );
 
 }

@@ -1,7 +1,5 @@
-export class SupabaseMiddleware {
+export function middleware() {
 
-    constructor() {
-
-    }
+    return;
 
 }

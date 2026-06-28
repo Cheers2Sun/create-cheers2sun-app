@@ -1,6 +1,12 @@
 export class DuffelClient {
 
-    constructor() {
+    constructor(
+        private readonly apiToken: string
+    ) {}
+
+    public token(): string {
+
+        return this.apiToken;
 
     }
 
