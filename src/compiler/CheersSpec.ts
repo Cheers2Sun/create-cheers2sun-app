@@ -1,11 +1,16 @@
 export interface CheersSpec {
   version: number;
 
+  template: string;
+
   project: {
     name: string;
     displayName?: string;
+    description?: string;
     organization?: string;
+    domain?: string;
   };
+
 
   application: {
     domain: string;

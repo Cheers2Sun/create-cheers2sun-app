@@ -23,17 +23,24 @@ export class ManifestWriter {
 
             generator: "create-cheers2sun-app",
 
-            version: "1.0.0",
+            generatorVersion: "1.0.0",
 
-            template: context.manifest.template,
+            manifestVersion: 1,
 
-            generatedAt:
-                new Date().toISOString(),
+            template: context.spec.template,
 
-            plugins:
-                context.manifest.plugins
+            generatedAt: new Date().toISOString(),
+
+            project: {
+
+                name: context.spec.project?.name
+
+            },
+
+            plugins: Object.keys( context.spec.plugins ?? {} )
 
         };
+
 
         fs.writeFileSync(
 
