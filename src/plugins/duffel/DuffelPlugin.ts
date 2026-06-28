@@ -1,18 +1,52 @@
 import { CheersContext } from "../../compiler/CheersContext";
 import { Plugin } from "../Plugin";
-
+import { PluginSupportResult,SUPPORTED } from "../PluginSupportResult";
 export class DuffelPlugin implements Plugin {
 
-  public readonly id = "duffel";
+    public readonly name = "duffel";
 
-  public readonly version = "1.0.0";
+    public supports(context: CheersContext): PluginSupportResult {
+            if (
+                context.spec.application.domain !== "travel"
+            ) {
+        
+                return {
+        
+                    supported: false,
+        
+                    reason: "requires application.domain = travel"
+        
+                };
+        
+            }
+        
+            return SUPPORTED;
+        
+    }
 
-  public async execute(
-    context: CheersContext
-  ): Promise<void> {
 
-    console.log("Duffel plugin loaded.");
+    public initialize(
+        context: CheersContext
+    ): void {
 
-  }
+        console.log("DuffelPlugin.initialize");
+
+    }
+
+    public generate(
+        context: CheersContext
+    ): void {
+
+        console.log("DuffelPlugin.generate");
+
+    }
+
+    public finalize(
+        context: CheersContext
+    ): void {
+
+        console.log("DuffelPlugin.finalize");
+
+    }
 
 }

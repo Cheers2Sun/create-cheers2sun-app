@@ -1,18 +1,37 @@
 import { CheersContext } from "../../compiler/CheersContext";
 import { Plugin } from "../Plugin";
-
+import { PluginSupportResult,SUPPORTED } from "../PluginSupportResult";
 export class SupabasePlugin implements Plugin {
 
-  public readonly id = "supabase";
+    public readonly name = "supabase";
 
-  public readonly version = "1.0.0";
+    public supports(context: CheersContext): PluginSupportResult {
+       return SUPPORTED;
+      /* return context.spec.plugins.supabase === true; */
+    }
 
-  public async execute(
-    context: CheersContext
-  ): Promise<void> {
+    public initialize(
+        context: CheersContext
+    ): void {
 
-    console.log("Supabase plugin loaded.");
+        console.log("SupabasePlugin.initialize");
 
-  }
+    }
+
+    public generate(
+        context: CheersContext
+    ): void {
+
+        console.log("SupabasePlugin.generate");
+
+    }
+
+    public finalize(
+        context: CheersContext
+    ): void {
+
+        console.log("SupabasePlugin.finalize");
+
+    }
 
 }

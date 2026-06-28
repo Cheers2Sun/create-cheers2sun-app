@@ -1,18 +1,36 @@
 import { CheersContext } from "../../compiler/CheersContext";
 import { Plugin } from "../Plugin";
-
+import { PluginSupportResult,SUPPORTED } from "../PluginSupportResult";
 export class CorePlugin implements Plugin {
 
-  public readonly id = "core";
+    public readonly name = "core";
 
-  public readonly version = "1.0.0";
+    public supports(context: CheersContext): PluginSupportResult {
+        return  SUPPORTED;
+    }
 
-  public async execute(
-    context: CheersContext
-  ): Promise<void> {
+    public initialize(
+        context: CheersContext
+    ): void {
 
-    console.log("Core plugin loaded.");
+        console.log("CorePlugin.initialize");
 
-  }
+    }
+
+    public generate(
+        context: CheersContext
+    ): void {
+
+        console.log("CorePlugin.generate");
+
+    }
+
+    public finalize(
+        context: CheersContext
+    ): void {
+
+        console.log("CorePlugin.finalize");
+
+    }
 
 }

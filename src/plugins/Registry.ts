@@ -1,15 +1,29 @@
-import { Plugin } from "./Plugin";
+import { PluginManager } from "./PluginManager";
+
+import { CorePlugin } from "./core/CorePlugin";
+import { DuffelPlugin } from "./duffel/DuffelPlugin";
+import { SupabasePlugin } from "./supabase/SupabasePlugin";
 
 export class Registry {
 
-  private readonly plugins: Plugin[] = [];
+    public static create(): PluginManager {
 
-  public register(plugin: Plugin): void {
-    this.plugins.push(plugin);
-  }
+        const manager = new PluginManager();
 
-  public getPlugins(): Plugin[] {
-    return [...this.plugins];
-  }
+        manager.register(
+            new CorePlugin()
+        );
+
+        manager.register(
+            new DuffelPlugin()
+        );
+
+        manager.register(
+            new SupabasePlugin()
+        );
+
+        return manager;
+
+    }
 
 }

@@ -3,6 +3,7 @@ import { CheersValidator } from "./CheersValidator";
 import { CheersContext } from "./CheersContext";
 import { TemplateLoader } from "../templates/TemplateLoader";
 import { CheersGenerator } from "../generator/CheersGenerator";
+import { Registry } from "../plugins/Registry";
 
 export class CheersCompiler {
 
@@ -43,6 +44,37 @@ export class CheersCompiler {
         };
 
         generator.generate(context);
+
+        const plugins = Registry.create();
+        
+        const result = plugins.execute(context);
+        
+        console.log();
+        
+        console.log("Plugin Summary");
+        
+        console.log("--------------");
+        
+        console.log(
+            "Executed :",
+            result.executed.length
+                ? result.executed.join(", ")
+                : "none"
+        );
+        
+        console.log(
+            "Skipped  :",
+            result.skipped.length
+                ? result.skipped.join(", ")
+                : "none"
+        );
+        
+        console.log(
+            "Failed   :",
+            result.failed.length
+                ? result.failed.join(", ")
+                : "none"
+        );
 
 
     }
