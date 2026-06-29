@@ -42,17 +42,17 @@ export class DuffelPlugin implements Plugin {
 
        writer.writeTemplate(
            "duffel/client.ts.tpl",
-           "src/lib/duffel/client.ts"
+           "src/plugins/duffel/client.ts"
        );
 
        writer.writeTemplate(
            "duffel/search.ts.tpl",
-           "src/lib/duffel/search.ts"
+           "src/plugins/duffel/search.ts"
        );
 
        writer.writeTemplate(
            "duffel/types.ts.tpl",
-           "src/lib/duffel/types.ts"
+           "src/plugins/duffel/types.ts"
        );
 
         writer.writeTemplate(        

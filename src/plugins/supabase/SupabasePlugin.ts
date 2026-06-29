@@ -28,17 +28,17 @@ export class SupabasePlugin implements Plugin {
     
         writer.writeTemplate(
             "supabase/client.ts.tpl",
-            "src/lib/supabase/client.ts"
+            "src/plugins/supabase/client.ts"
         );
     
         writer.writeTemplate(
             "supabase/server.ts.tpl",
-            "src/lib/supabase/server.ts"
+            "src/plugins/supabase/server.ts"
         );
     
         writer.writeTemplate(
             "supabase/middleware.ts.tpl",
-            "src/lib/supabase/middleware.ts"
+            "src/plugins/supabase/middleware.ts"
         );
     
         writer.writeTemplate(
