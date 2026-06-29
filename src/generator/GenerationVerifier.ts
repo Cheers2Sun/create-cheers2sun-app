@@ -44,8 +44,29 @@ export class GenerationVerifier {
             "src/lib/duffel/types.ts",
             "src/lib/supabase/client.ts",
             "src/lib/supabase/server.ts",
-            "src/lib/supabase/middleware.ts"
+            "src/lib/supabase/middleware.ts",
+            "app/flights/page.tsx",
+            "app/hotels/page.tsx",
+            "app/packages/page.tsx",
+            "app/about/page.tsx",
+            "app/contact/page.tsx",
+            "components/Hero.tsx",
+            "components/SearchBox.tsx",
+            "components/Navigation.tsx",
+            "components/FeaturedDestinations.tsx",
+            "app/api/flights/route.ts",
 
+            "src/controllers/FlightSearchController.ts",
+            "src/services/FlightService.ts",
+
+            "src/providers/FlightProvider.ts",
+            "src/providers/ProviderFactory.ts",
+
+            "src/models/Airport.ts",
+            "src/models/FlightOffer.ts",
+            "src/models/FlightSearchRequest.ts",
+            "src/models/FlightSearchResponse.ts",
+            "src/models/FlightSegment.ts"
 
         ];
 

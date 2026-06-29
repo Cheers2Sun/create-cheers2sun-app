@@ -1,14 +1,10 @@
-export function Footer() {
+export default function Footer() {
 
     return (
 
         <footer>
 
-            <small>
-
-                Powered by Cheers2Sun
-
-            </small>
+            © {{project.displayName}}
 
         </footer>
 

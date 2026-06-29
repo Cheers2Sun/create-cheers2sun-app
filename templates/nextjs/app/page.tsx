@@ -1,5 +1,8 @@
-import { Header } from "../components/Header";
-import { Footer } from "../components/Footer";
+import  Header  from "../components/Header";
+import Hero from "../components/Hero";
+import SearchBox from "../components/SearchBox";
+import FeaturedDestinations from "../components/FeaturedDestinations";
+import Footer  from "../components/Footer";
 
 export default function HomePage() {
 
@@ -7,41 +10,15 @@ export default function HomePage() {
 
         <>
 
-            <Header />
+            <Header/>
 
-            <main>
+            <Hero/>
 
-                <h2>
+            <SearchBox/>
 
-                    Search Flights
+            <FeaturedDestinations/>
 
-                </h2>
-
-                <form>
-
-                    <input
-                        placeholder="Origin"
-                    />
-
-                    <input
-                        placeholder="Destination"
-                    />
-
-                    <input
-                        type="date"
-                    />
-
-                    <button>
-
-                        Search
-
-                    </button>
-
-                </form>
-
-            </main>
-
-            <Footer />
+            <Footer/>
 
         </>
 

@@ -55,6 +55,11 @@ export class DuffelPlugin implements Plugin {
            "src/lib/duffel/types.ts"
        );
 
+        writer.writeTemplate(        
+            "duffel/api/flights/route.ts.tpl",
+            "app/api/flights/route.ts",
+        );
+
     }
 
     public finalize(

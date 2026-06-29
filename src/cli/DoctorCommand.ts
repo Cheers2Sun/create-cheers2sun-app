@@ -17,13 +17,6 @@ export class DoctorCommand {
         );
 
         console.log(
-            "Version      :",
-            require(
-                Installation.packageJson()
-            ).version
-        );
-
-        console.log(
            "Version :",
             Installation.version()
         );
